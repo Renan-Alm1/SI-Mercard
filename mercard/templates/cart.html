@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="box-element">
+				
+				<a class="btn btn-outline-dark" href="{% url 'home' %}">&#x2190; Voltar às Compras</a>
+
+				<br>
+				<br>
+
+				<table class="table">
+					<tr>
+						<th><h5> Items: <strong>{{items}}</strong></h5></th>
+						<th><h5> Total: <strong>{{total}}</strong></h5></th>
+						<th>
+							<a style="float:right; margin: 5px" class="btn btn-success" href="{% url 'pay' %}">Checkout</a>
+						</th>
+					</tr>
+				</table>
+			</div>
+
+			<br>
+
+			<div class="box-element">
+				
+				<div class="cart-row">
+					<div style="flex:2"></div>
+					<div style="flex:2"><strong>Item</strong></div>
+					<div style="flex:1"><strong>Preço</strong></div>
+					<div style="flex:1"><strong>Quantidade</strong></div>
+					<div style="flex:1"><strong>Preço Total</strong></div>
+				</div>
+				{% if orders %}
+				
+				{% for x in orders %}
+				
+				<div class="cart-row">
+					<div style="flex:2"><img src = '{{ x.products.images.url }}' style= 'width: 150px'/></div>
+					<div style="flex:2">{{ x.products.title }}</div>
+					<div style="flex:1">{{ x.products.price }}</div>
+					<div style="flex:1">{{ x.quantidade_comprada }}</div>
+					<div style="flex:1">{{ x.calculate }}</div>
+				</div>
+				
+				{% endfor %}
+				
+				{% else %}
+				<h1>Nenhum pedido encontrado</h1>
+				{% endif %}
+
+			</div>
+		</div>
+	</div>
+{% endblock content %}

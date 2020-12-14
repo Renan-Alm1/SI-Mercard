@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <h1>{{title}}</h1>
+    <p>{{user}}</p>
+    <img src = '{{ images.url }}' style= 'width: 150px'/>
+    <p>{{price}}</p>  
+    <p>{{tipo}}</p>  
+    <p>{{country}}</p> 
+    <p>{{quantity}}</p>  
+    <p>{{Language}}</p>
+    {% if Card_condition != "None" %} 
+        <p>{{Card_condition}}</p>
+    {% endif %}
+    {% if Game_condition != "None" %}
+        <p>{{Game_condition}}</p> 
+    {% endif %}
+    {% if quantity > 0 %}
+        <p>{{quantity}} unidades disponíveis</p>
+        <form action="{% url 'create_order' %}" method="get">
+            <input name="quant" type="number" placeholder="1" value="1" >
+            <input type="hidden" name='product_id' value='{{ ID }}'>
+            <button type="submit" name="button">Adicionar ao carrinho</button>
+        </form>
+    {% endif %}
+    
+{% endblock %}

@@ -1,0 +1,7 @@
+{% load static %}
+<div class="topnav a">
+  <a href="{% url 'type_mc' %}"><p>Magic the Gathering</p></a>
+  <a href="{% url 'type_ygo' %}"><p>Yu-Gi-Oh</p></a>
+  <a href="{% url 'type_pkc' %}"><p>Pokemon</p></a>
+  <a href="{% url 'cart' %}"><img src="{% static 'images/cart.png' %}" alt="alternatetext" width="32" height="32"></a>
+</div>

@@ -1,0 +1,24 @@
+<h1>{{products.title}}</h1>
+
+<img src = '{{ products.images.url }}' style= 'width: 150px'/>
+<p>{{products.price}}</p>
+
+<p>{{products.tipo}}</p>
+
+<p>{{products.country}}</p>
+
+<p>{{products.quantity}}</p>
+
+<p>{{products.Language}}</p>
+
+{% if products.Card_condition %}
+
+    <p>{{products.Card_condition}}</p>
+
+{% endif %}
+
+{% if products.Game_condition %}
+
+    <p>{{products.Game_condition}}</p>
+
+{% endif %}

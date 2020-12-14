@@ -1,0 +1,50 @@
+{% load static %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+<!-- Fontawesome CSS -->
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+
+<!-- jquery-confirm CSS -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+<!DOCTYPE html >
+<html lang ="en">
+<head >
+<meta charset ="UTF -8">
+<meta name =" viewport " content =" width =device -width , initial - scale =1.0">
+<title > {{ page.title }} </title >
+    <link rel="stylesheet"  href="{% static 'css/style.css' %}">
+</head >
+<body > 
+    <div class="Header">
+        <a href="{% url 'home' %}"><img src="{% static 'images/logo.jpg' %}" alt="alternatetext" width="180" height="100" align="left"></a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout_view' %}"><p>Log-Out</p></a>
+        <a href="{% url 'register_seller' %}"><p>Cadastrar-se como vendedor</p></a>
+        {% else %}
+        <a href="{% url 'login_page' %}"><p>Cadastrar/Log-In</p></a>
+        {% endif %}
+    </div>
+    <form action="{% url 'search_result' %}" method="get">
+        <input name="query" type="text" placeholder="Pesquise..." >
+        <button type="submit" name="button">Buscar</button>
+    </form>    
+    <div>
+    {% include 'navbar.html' %}
+    
+    {% block content %}
+
+    {% endblock %}
+    </div>
+    <div class="content">
+        {% if user.is_authenticated %}
+        <h1>Mercard</h1>
+        {% else %}
+        <h1>Em obras</h1>
+        {% endif %}
+    </div>
+    <div class="footer">
+        <p>Mercard: A loja online de card-games</p>
+    </div>      
+</body >
+</html >
